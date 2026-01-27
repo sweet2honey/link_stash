@@ -1,0 +1,17 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Archive files (for packaging)
+*.zip
+
+# Node modules (if you add build tools later)
+node_modules/
+package-lock.json

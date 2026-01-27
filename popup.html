@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Link Collector</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Saved Links</h1>
+    
+    <div id="links-container">
+      <p id="empty-message" class="empty">No links saved yet.</p>
+      <ul id="links-list"></ul>
+    </div>
+    
+    <div class="button-group">
+      <button id="copy-urls-btn" class="btn btn-primary">Copy as URLs</button>
+      <button id="copy-markdown-btn" class="btn btn-primary">Copy as Markdown</button>
+      <button id="clear-all-btn" class="btn btn-danger">Clear all</button>
+    </div>
+    
+    <p id="status-message" class="status"></p>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
