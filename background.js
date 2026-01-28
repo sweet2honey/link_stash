@@ -10,7 +10,7 @@ chrome.runtime.onInstalled.addListener(() => {
   // "Save Link" for right-clicking on anchor elements
   chrome.contextMenus.create({
     id: "saveLinkUrl",
-    title: "Save Link",
+    title: "Stash Link",
     contexts: ["link"]
   });
 });

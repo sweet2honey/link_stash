@@ -7,7 +7,7 @@ A Chrome extension to collect and cache web links for easy batch copying to Note
 ## Features
 
 - **Stash links** - Right-click on any page to save the current URL with its title
-- **Save link text** - Right-click on any link to save it with its actual text
+- **Stash link text** - Right-click on any link to save it with its actual text
 - **Batch export** - Copy all saved links as plain URLs or markdown format
 - **Markdown support** - Export as `[Page Title](url)` for better readability
 - **Quick copy** - Context menu option to copy all links from anywhere
@@ -31,7 +31,7 @@ A Chrome extension to collect and cache web links for easy batch copying to Note
 ### Saving Links
 
 - **Save current page**: Right-click anywhere on a page → "Stash link"
-- **Save specific link**: Right-click on any link → "Save Link"
+- **Save specific link**: Right-click on any link → "Stash Link"
 
 ### Managing Links
 
@@ -93,7 +93,7 @@ MIT
 ### 保存链接
 
 - **保存当前页面**：在页面任意位置右键 → "Stash link"
-- **保存特定链接**：在任意链接上右键 → "Save Link"
+- **保存特定链接**：在任意链接上右键 → "Stash Link"
 
 ### 管理链接
 
