@@ -24,7 +24,7 @@ A Chrome extension to collect and cache web links for easy batch copying to Note
 
 ### From Chrome Web Store
 
-*(Coming soon)*
+[Link Stash](https://chromewebstore.google.com/detail/link-stash/fgocfmpeehnabghbhdocgaloggppgdpf)
 
 ## Usage
 
@@ -86,7 +86,7 @@ MIT
 
 ### 从 Chrome 网上应用店安装
 
-*（即将推出）*
+[Link Stash](https://chromewebstore.google.com/detail/link-stash/fgocfmpeehnabghbhdocgaloggppgdpf)
 
 ## 使用方法
 
