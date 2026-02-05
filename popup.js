@@ -7,21 +7,26 @@ const clearAllBtn = document.getElementById('clear-all-btn');
 const statusMessage = document.getElementById('status-message');
 // Load and display links on popup open
 document.addEventListener('DOMContentLoaded', () => {
-    cleanupDeletedLinks();
-    loadLinks();
+    cleanupDeletedLinks(() => {
+        loadLinks();
+    });
 });
 // Button event listeners
 copyUrlsBtn.addEventListener('click', copyAsUrls);
 copyMarkdownBtn.addEventListener('click', copyAsMarkdown);
 clearAllBtn.addEventListener('click', clearAllLinks);
 // Permanently remove links marked as deleted
-function cleanupDeletedLinks() {
+function cleanupDeletedLinks(done) {
     chrome.storage.local.get(['links'], (result) => {
         const links = result.links || [];
         const activeLinks = links.filter(link => !link.deleted);
         if (activeLinks.length !== links.length) {
-            chrome.storage.local.set({ links: activeLinks });
+            chrome.storage.local.set({ links: activeLinks }, () => {
+                done === null || done === void 0 ? void 0 : done();
+            });
+            return;
         }
+        done === null || done === void 0 ? void 0 : done();
     });
 }
 // Load links from storage and display them

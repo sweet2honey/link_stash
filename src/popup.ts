@@ -10,8 +10,9 @@ const statusMessage = document.getElementById('status-message') as HTMLDivElemen
 
 // Load and display links on popup open
 document.addEventListener('DOMContentLoaded', () => {
-  cleanupDeletedLinks();
-  loadLinks();
+  cleanupDeletedLinks(() => {
+    loadLinks();
+  });
 });
 
 // Button event listeners
@@ -20,13 +21,17 @@ copyMarkdownBtn.addEventListener('click', copyAsMarkdown);
 clearAllBtn.addEventListener('click', clearAllLinks);
 
 // Permanently remove links marked as deleted
-function cleanupDeletedLinks(): void {
+function cleanupDeletedLinks(done?: () => void): void {
   chrome.storage.local.get(['links'], (result: LinksStorage) => {
     const links = result.links || [];
     const activeLinks = links.filter(link => !link.deleted);
     if (activeLinks.length !== links.length) {
-      chrome.storage.local.set({ links: activeLinks });
+      chrome.storage.local.set({ links: activeLinks }, () => {
+        done?.();
+      });
+      return;
     }
+    done?.();
   });
 }
 

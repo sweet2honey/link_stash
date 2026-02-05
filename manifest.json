@@ -1,6 +1,6 @@
 {
     "name": "Link Stash",
-    "description": "Collect and cache web links for easy batch copying(origin text or Markdown) to NotebookLM and other tools. 收集并缓存网页链接，以便轻松批量复制（原始文本或 Markdown）到 NotebookLM 及其他工具中。",
+    "description": "Collect and cache web links for easy batch copying(origin text or Markdown) to NotebookLM and other tools.",
     "version": "0.0.3",
     "manifest_version": 3,
     "permissions": [
