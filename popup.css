@@ -172,3 +172,27 @@ h1 {
 #links-container::-webkit-scrollbar-thumb:hover {
   background: #aaa;
 }
+
+/* Deleted link styling */
+.link-item-deleted {
+  opacity: 0.5;
+}
+
+.link-item-deleted .link-url {
+  text-decoration: line-through;
+  color: #999;
+}
+
+.link-item-deleted .open-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.link-item-deleted .delete-btn {
+  color: #4caf50;
+}
+
+.link-item-deleted .delete-btn:hover {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
