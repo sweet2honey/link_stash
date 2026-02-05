@@ -15,3 +15,6 @@ Thumbs.db
 # Node modules (if you add build tools later)
 node_modules/
 package-lock.json
+
+# TypeScript compiled output (source is in src/)
+*.js.map

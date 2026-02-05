@@ -1,0 +1,29 @@
+{
+  "name": "link_stash",
+  "version": "0.0.3",
+  "description": "A Chrome extension to collect and cache web links for easy batch copying to NotebookLM and other tools.",
+  "main": "background.js",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "clean": "rm -f *.js *.js.map",
+    "rebuild": "npm run clean && npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sweet2honey/link_stash.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/sweet2honey/link_stash/issues"
+  },
+  "homepage": "https://github.com/sweet2honey/link_stash#readme",
+  "devDependencies": {
+    "@types/chrome": "^0.1.36",
+    "typescript": "^5.9.3"
+  }
+}

@@ -1,7 +1,7 @@
 {
     "name": "Link Stash",
     "description": "Collect and cache web links for easy batch copying to NotebookLM and other tools",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "manifest_version": 3,
     "permissions": [
         "contextMenus",

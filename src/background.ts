@@ -1,0 +1,68 @@
+import { Link, LinksStorage } from './types.js';
+
+// Create context menus when extension is installed
+chrome.runtime.onInstalled.addListener(() => {
+  // "Save Link" for right-clicking on page background
+  chrome.contextMenus.create({
+    id: "savePageLink",
+    title: "Stash link",
+    contexts: ["page"]
+  });
+
+  // "Save Link" for right-clicking on anchor elements
+  chrome.contextMenus.create({
+    id: "saveLinkUrl",
+    title: "Stash Link",
+    contexts: ["link"]
+  });
+});
+
+// Handle context menu clicks
+chrome.contextMenus.onClicked.addListener(async (info: chrome.contextMenus.OnClickData, tab?: chrome.tabs.Tab) => {
+  if (!tab?.id) return;
+
+  if (info.menuItemId === "savePageLink") {
+    // Save current page URL with title
+    if (tab.url && tab.title) {
+      saveLink(tab.url, tab.title);
+    }
+  } else if (info.menuItemId === "saveLinkUrl") {
+    // Inject script to get the link text dynamically
+    try {
+      const results = await chrome.scripting.executeScript({
+        target: { tabId: tab.id },
+        func: getLinkText,
+        args: [info.linkUrl as string]
+      });
+      const linkText = results[0]?.result || info.linkUrl || '';
+      saveLink(info.linkUrl as string, linkText);
+    } catch (error) {
+      console.error('Failed to get link text:', error);
+      saveLink(info.linkUrl as string, info.linkUrl as string);
+    }
+  }
+});
+
+// Function to be injected into the page to get link text
+function getLinkText(targetUrl: string): string {
+  // Find the anchor element with matching href
+  const links = document.querySelectorAll('a');
+  for (let i = 0; i < links.length; i++) {
+    const link = links[i] as HTMLAnchorElement;
+    if (link.href === targetUrl) {
+      return link.textContent?.trim() || link.href;
+    }
+  }
+  return targetUrl;
+}
+
+// Save a link to storage (allows duplicates)
+function saveLink(url: string, title: string): void {
+  chrome.storage.local.get(['links'], (result: LinksStorage) => {
+    const links: Link[] = result.links || [];
+    links.push({ url, title });
+    chrome.storage.local.set({ links }, () => {
+      console.log('Link saved:', title, url);
+    });
+  });
+}
