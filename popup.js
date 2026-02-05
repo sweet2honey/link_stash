@@ -51,6 +51,12 @@ function renderLinks(links) {
       urlSpan.className = 'link-url';
       urlSpan.textContent = title;
       urlSpan.title = url;
+
+      const openBtn = document.createElement('button');
+      openBtn.className = 'open-btn';
+      openBtn.textContent = '↗';
+      openBtn.title = 'Open this link';
+      openBtn.addEventListener('click', () => openLink(index));
       
       const deleteBtn = document.createElement('button');
       deleteBtn.className = 'delete-btn';
@@ -59,10 +65,23 @@ function renderLinks(links) {
       deleteBtn.addEventListener('click', () => deleteLink(index));
       
       li.appendChild(urlSpan);
+      li.appendChild(openBtn);
       li.appendChild(deleteBtn);
       linksList.appendChild(li);
     });
   }
+}
+
+// Open a single link by index
+function openLink(index) {
+  chrome.storage.local.get(['links'], (result) => {
+    const links = result.links || [];
+    if (index >= 0 && index < links.length) {
+      const link = links[index];
+      const url = typeof link === 'string' ? link : link.url;
+      chrome.tabs.create({ url });
+    }
+  });
 }
 
 // Delete a single link by index
