@@ -127,7 +127,7 @@ function copyAsMarkdown() {
         const activeLinks = links.filter(link => !link.deleted);
         if (activeLinks.length === 0)
             return;
-        const markdown = activeLinks.map(link => `[${link.title}](${link.url})`).join('\n');
+        const markdown = activeLinks.map(link => `[${link.title}](${link.url})`).join('\n\n');
         navigator.clipboard.writeText(markdown).then(() => {
             showStatus('Copied as Markdown!');
         }).catch((err) => {
